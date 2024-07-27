@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet'
 import { useTranslation } from 'react-i18next'
-import { Hero } from 'src/components/hero'
+import { LoanCalculator } from 'src/components/loan-calculator'
 
 export default function Home() {
   const { t } = useTranslation('translation')
@@ -9,7 +9,9 @@ export default function Home() {
       <Helmet>
         <title>{t('title')}</title>
       </Helmet>
-      <Hero />
+      <div className="container m-8">
+        <LoanCalculator />
+      </div>
     </>
   )
 }

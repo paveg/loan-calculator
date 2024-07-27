@@ -1,12 +1,16 @@
 {
-  "title": "Vite React Tailwind Starter",
-  "features": "Features",
-  "modernstack": "Modern and efficient stack",
-  "modernstack-desc": "Built with Vite, React, Tailwind CSS, Shadcnui, and more",
-  "i18nsupport": "i18n support out of the box",
-  "i18nsupport-desc": "Ship your product with different languages natively",
-  "linters": "Lint all code at save",
-  "linters-desc": "Built with ESLint, Prettier, Stylelint, and Commitlint",
-  "hero-title": "Building Apps with the best DX we love",
-  "get-started": "Get Started"
+  "title": "Loan Calculator",
+  "loanTitle": "Loan",
+  "calculatorTitle": "Simple Calculator",
+  "calculatorDescription": "Easy to calculate your loan(Equalization of payments)",
+  "loanAmount": "Loan amount (ten thousand yen)",
+  "loanAmount.placeholder": "Enter the loan amount",
+  "annualInterestRate": "Annual interest (%)",
+  "annualInterestRate.placeholder": "Enter the annual interest rate",
+  "repaymentPeriod": "Repayment period (years)",
+  "repaymentPeriod.placeholder": "Enter the repayment period",
+  "monthlyRepaymentAmount": "Monthly repayment amount: {{amount}} yen",
+  "totalRepaymentAmount": "Total repayment amount: {{amount}} yen",
+  "interestExpense": "Interest expense: {{amount}} yen",
+  "conditionIsInvalid": "Condition is incomplete"
 }

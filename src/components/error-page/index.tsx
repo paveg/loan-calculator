@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { Link, useRouteError } from 'react-router-dom'
-import { Button } from '../ui/button'
+import { Button } from 'src/components/ui/button'
 
 export default function ErrorPage() {
   const error = useRouteError() as any
@@ -15,7 +15,7 @@ export default function ErrorPage() {
         <i>{error?.statusText || error?.message}</i>
       </p>
       <Button asChild>
-        <Link to="/">{t('backtohomepage')}</Link>
+        <Link to="/">{t('backToHome')}</Link>
       </Button>
     </div>
   )
