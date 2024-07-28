@@ -1,4 +1,4 @@
-name: EVitest
+name: Vitest
 
 on:
   push:
