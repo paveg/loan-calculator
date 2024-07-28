@@ -30,13 +30,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
       - name: Install ESLint
         run: |
-          npm install eslint@8.10.0
-          npm install @microsoft/eslint-formatter-sarif@2.1.7
+          pnpm install eslint@8.10.0
+          pnpm install @microsoft/eslint-formatter-sarif@2.1.7
 
       - name: Run ESLint
-        run: npx eslint ./src
+        run: pnpx eslint ./src
           --config .eslintrc
           --ext .js,.jsx,.ts,.tsx
           --format @microsoft/eslint-formatter-sarif
