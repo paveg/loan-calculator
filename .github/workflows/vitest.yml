@@ -12,10 +12,6 @@ jobs:
     name: Run test codes
     timeout-minutes: 10
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        branch:
-          - ${{ github.head_ref }}
     permissions:
       # Required to checkout the code
       contents: read
@@ -41,23 +37,6 @@ jobs:
       - name: Upload coverage
         uses: actions/upload-artifact@v4
         with:
-          name: coverage-${{ matrix.branch }}
+          name: coverage
           path: coverage
 
-  report-coverage:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download coverage artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: coverage-${{ github.head_ref }}
-          path: coverage
-      - uses: actions/download-artifact@v4
-        with:
-          name: coverage-main
-          path: coverage-main
-      - name: Report coverage
-        uses: davelosert/vitest-coverage-report-action@v2
-        with:
-          json-summary-compare-path: coverage-main/coverage-summary.json
