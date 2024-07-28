@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import resourcesToBackend from 'i18next-resources-to-backend'
 
-export const LANGUAGES = ['ja', 'en']
+export const LANGUAGES = ['ja', 'en', 'zh-Hans']
 
 i18next
   .use(LanguageDetector)
@@ -18,5 +18,7 @@ i18next
   .init({
     fallbackLng: {
       default: ['ja', 'en'],
+      zh: ['zh-Hans'],
+      ['zh-CN']: ['zh-Hans'],
     },
   })

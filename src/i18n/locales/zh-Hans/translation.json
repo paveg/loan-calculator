@@ -1,0 +1,22 @@
+{
+  "title": "贷款计算器",
+  "loanTitle": "贷款",
+  "calculatorTitle": "简易计算器",
+  "calculatorDescription": "轻松计算您的贷款",
+  "calculatorFooterTitle": "结果",
+  "loanCondition": "贷款条件",
+  "levelPaymentMortgage": "等额本息",
+  "linearMortgage": "等额本金",
+  "loanAmount": "贷款金额（万円）",
+  "loanAmount.placeholder": "请输入贷款金额",
+  "annualInterestRate": "年利率(%)",
+  "annualInterestRate.placeholder": "请输入年利率",
+  "repaymentPeriod": "还款期限（年）",
+  "repaymentPeriod.placeholder": "请输入还款期限",
+  "principal": "校长",
+  "monthlyRepaymentAmount": "月还款额",
+  "totalRepaymentAmount": "还款总额",
+  "interestExpense": "支付利息总额",
+  "conditionIsInvalid": "条件不完整",
+  "amountUnit": "{{amount}} 円"
+}

@@ -13,6 +13,7 @@
   "annualInterestRate.placeholder": "利率を入力してください",
   "repaymentPeriod": "返済期間（年）",
   "repaymentPeriod.placeholder": "返済期間を入力してください",
+  "principal": "元本",
   "monthlyRepaymentAmount": "返済月額",
   "totalRepaymentAmount": "返済総額",
   "interestExpense": "利息総額",
