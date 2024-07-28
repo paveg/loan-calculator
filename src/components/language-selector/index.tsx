@@ -7,6 +7,7 @@ import { Languages, ChevronDown } from 'lucide-react'
 import i18next from 'i18next'
 
 const getLocaleDisplayName = (locale: string, displayLocale?: string) => {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const displayName = new Intl.DisplayNames([displayLocale || locale], {
     type: 'language',
   }).of(locale)!
@@ -23,6 +24,7 @@ const LanguageSelector = () => {
     }))
   }, [])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const languageChanged = useCallback(async (locale: any) => {
     i18next.changeLanguage(locale)
   }, [])

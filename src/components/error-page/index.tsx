@@ -3,6 +3,7 @@ import { Link, useRouteError } from 'react-router-dom'
 import { Button } from 'src/components/ui/button'
 
 export default function ErrorPage() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const error = useRouteError() as any
   const { t } = useTranslation('notfound')
 

@@ -10,6 +10,7 @@
     "typecheck:watch": "tsc --noEmit --watch",
     "lint": "eslint --quiet src --ext .ts,.tsx && stylelint src/**/*.less",
     "lint:fix": "eslint --quiet --fix src --ext .ts,.tsx && stylelint --fix src/**/*.less",
+    "lint:ci": "eslint --quiet src --ext .ts,.tsx -f @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif && stylelint src/**/*.less",
     "i18next-resources-for-ts": "i18next-resources-for-ts toc -i ./src/i18n/locales/en -o ./src/types/resources.ts",
     "translate": "transmart"
   },
@@ -43,6 +44,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
+    "@microsoft/eslint-formatter-sarif": "^3.1.0",
     "@tanstack/react-query-devtools": "^5.51.15",
     "@types/loadable__component": "^5.13.4",
     "@types/node": "^18.15.11",
