@@ -39,8 +39,8 @@ importers:
         specifier: ^5.51.15
         version: 5.51.15(react@18.3.1)
       '@transmart/cli':
-        specifier: ^0.2.4
-        version: 0.2.4(@types/node@18.19.42)(typescript@5.5.4)
+        specifier: ^0.5.0
+        version: 0.5.0(@types/node@18.19.42)(typescript@5.5.4)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -1105,12 +1105,12 @@ packages:
     peerDependencies:
       react: ^18.0.0
 
-  '@transmart/cli@0.2.4':
-    resolution: {integrity: sha512-Qw3jm2VSQuyp3h+DhK5YSNHW8+pTalRqC9Hetzbc3hy2ZfELFsIYS03kXIu7wnvrehaUzXem4ZMsKnCWqhQM/A==}
+  '@transmart/cli@0.5.0':
+    resolution: {integrity: sha512-sR5TRXmossy37sLM5XloDHnveD9mLFIgxzCMIWZ+9/+KPONRe0ry0/FZyRwydjAyI6jqi8AA09bNHL+rCANymA==}
     hasBin: true
 
-  '@transmart/core@0.2.2':
-    resolution: {integrity: sha512-bVCkMP+3FxhZDaCtsxWMZ5xalIbCJS/7jRPFKtWidxOJiV9kvf9njZwALbLT5LiCJtTbX55yGe6Vwnzx3/XupQ==}
+  '@transmart/core@0.5.0':
+    resolution: {integrity: sha512-U7jj4ks4G++hdUYTwaNFKebVZCSNEmALpesqkVR18pgw5HDFSwwck5NXpKKbdhTeJIZrZY0u13zMHR/UwkECVQ==}
 
   '@ts-morph/common@0.19.0':
     resolution: {integrity: sha512-Unz/WHmd4pGax91rdIKWi51wnVUW11QttMEPpBiBgIewnc9UQIX7UDLxr5vRlqeByXCwhkF6VabSsI0raWcyAQ==}
@@ -2489,6 +2489,10 @@ packages:
   jsonparse@1.3.1:
     resolution: {integrity: sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==}
     engines: {'0': node >= 0.2.0}
+
+  jsonrepair@3.8.0:
+    resolution: {integrity: sha512-89lrxpwp+IEcJ6kwglF0HH3Tl17J08JEpYfXnvvjdp4zV4rjSoGu2NdQHxBs7yTOk3ETjTn9du48pBy8iBqj1w==}
+    hasBin: true
 
   jsx-ast-utils@3.3.5:
     resolution: {integrity: sha512-ZZow9HBI5O6EPgSJLUb8n2NKgmVWTwCvHGwFuJlMjvLFqlGG6pjirPhtdsseaLZjSibD8eegzmYpUZwoIlj2cQ==}
@@ -4776,9 +4780,9 @@ snapshots:
       '@tanstack/query-core': 5.51.15
       react: 18.3.1
 
-  '@transmart/cli@0.2.4(@types/node@18.19.42)(typescript@5.5.4)':
+  '@transmart/cli@0.5.0(@types/node@18.19.42)(typescript@5.5.4)':
     dependencies:
-      '@transmart/core': 0.2.2
+      '@transmart/core': 0.5.0
       '@types/spinnies': 0.5.3
       commander: 9.5.0
       cosmiconfig: 8.3.6(typescript@5.5.4)
@@ -4790,13 +4794,14 @@ snapshots:
       - encoding
       - typescript
 
-  '@transmart/core@0.2.2':
+  '@transmart/core@0.5.0':
     dependencies:
       '@types/glob': 8.1.0
       fs-extra: 11.2.0
       glob: 9.3.5
       gpt-3-encoder: 1.1.4
       gpt3-tokenizer: 1.1.5
+      jsonrepair: 3.8.0
       node-fetch: 2.7.0
       p-limit: 3.1.0
     transitivePeerDependencies:
@@ -6315,6 +6320,8 @@ snapshots:
       graceful-fs: 4.2.11
 
   jsonparse@1.3.1: {}
+
+  jsonrepair@3.8.0: {}
 
   jsx-ast-utils@3.3.5:
     dependencies:

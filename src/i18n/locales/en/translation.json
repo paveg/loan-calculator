@@ -13,6 +13,7 @@
   "annualInterestRate.placeholder": "Enter the annual interest rate",
   "repaymentPeriod": "Repayment period (years)",
   "repaymentPeriod.placeholder": "Enter the repayment period",
+  "principal": "Principal",
   "monthlyRepaymentAmount": "Monthly Payment",
   "totalRepaymentAmount": "Total Repayment",
   "interestExpense": "Total Interest Paid",

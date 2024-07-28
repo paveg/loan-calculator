@@ -124,6 +124,8 @@ export const LoanCalculator = () => {
           ) : (
             <div className="flex flex-col gap-4">
               <div className="grid grid-cols-2 gap-2 text-muted-foreground">
+                <div>{t('principal')}:</div>
+                <div className="text-right">{t('amountUnit', { amount: loanAmountInt })}</div>
                 <div>{t('monthlyRepaymentAmount')}:</div>
                 <div className="text-right">{t('amountUnit', { amount: result })}</div>
                 <div>{t('interestExpense')}:</div>
