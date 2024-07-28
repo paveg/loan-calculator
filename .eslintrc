@@ -18,6 +18,9 @@
   "overrides": [],
   "parser": "@typescript-eslint/parser",
   "settings": {
+    "react": {
+      "version": "detect"
+    },
     "import/resolver": {
       "typescript": "./tsconfig.json"
     }
