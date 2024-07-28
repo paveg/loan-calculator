@@ -12,20 +12,22 @@ import { Calculator, RepaymentMethods } from 'src/utils/calculator'
 export const LoanCalculator = () => {
   const { t } = useTranslation('translation')
   const [loanAmount, setLoanAmount] = useState<string>('')
+  const [bonusAmount, setBonusAmount] = useState<string>('0')
   const [repaymentMethod, setRepaymentMethod] = useState<RepaymentMethods>('level-payment-mortgage')
   const [repaymentPeriod, setRepaymentPeriod] = useState<string>('1')
   const [annualInterestRate, setAnnualInterestRate] = useState<string>('')
 
   const calculate = (
-    repaymentMethod: RepaymentMethods,
     loanAmount: string,
+    bonusAmount: string,
+    repaymentMethod: RepaymentMethods,
     repaymentPeriod: string,
     annualInterestRate: string,
   ) => {
-    return new Calculator(loanAmount, repaymentMethod, repaymentPeriod, annualInterestRate).run()
+    return new Calculator(loanAmount, bonusAmount, repaymentMethod, repaymentPeriod, annualInterestRate).run()
   }
 
-  const result = calculate(repaymentMethod, loanAmount, repaymentPeriod, annualInterestRate)
+  const result = calculate(loanAmount, bonusAmount, repaymentMethod, repaymentPeriod, annualInterestRate)
   const loanAmountInt = (parseInt(loanAmount) || 0) * 10000
   const totalAmount = result * (parseInt(repaymentPeriod) * 12)
 
