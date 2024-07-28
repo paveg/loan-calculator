@@ -9,7 +9,7 @@ export default function Home() {
       <Helmet>
         <title>{t('title')}</title>
       </Helmet>
-      <div className="container m-8">
+      <div className="container my-8">
         <LoanCalculator />
       </div>
     </>

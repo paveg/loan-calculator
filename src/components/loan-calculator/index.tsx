@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
-import { Select, SelectContent, SelectTrigger, SelectValue } from '../ui/select'
-import { SelectItem } from '@radix-ui/react-select'
+import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { useTranslation } from 'react-i18next'
+import { Slider } from '../ui/slider'
 
 export const LoanCalculator = () => {
   const { t } = useTranslation('translation')
   const [loanAmount, setLoanAmount] = useState<string>('')
-  const [repaymentPeriod, setRepaymentTerm] = useState<string>('')
+  const [repaymentMethod, setRepaymentMethod] = useState<string>('level-payment-mortgage')
+  const [repaymentPeriod, setRepaymentPeriod] = useState<string>('1')
   const [annualInterestRate, setAnnualInterestRate] = useState<string>('')
 
   const calculate = (loanAmount: string, repaymentPeriod: string, annualInterestRate: string) => {
@@ -25,9 +26,9 @@ export const LoanCalculator = () => {
     return Number(m.toFixed(3)) * 10000
   }
 
-  const result = calculate(loanAmount, repaymentPeriod, annualInterestRate)
-  const loanAmountInt = (parseInt(loanAmount) || 0) * 10000
-  const totalAmount = result * (parseInt(repaymentPeriod) * 12)
+  const result = Math.round(calculate(loanAmount, repaymentPeriod, annualInterestRate))
+  const loanAmountInt = Math.round((parseInt(loanAmount) || 0) * 10000)
+  const totalAmount = Math.round(result * (parseInt(repaymentPeriod) * 12))
 
   return (
     <Card id="loan">
@@ -36,8 +37,27 @@ export const LoanCalculator = () => {
         <CardDescription>{t('calculatorDescription')}</CardDescription>
       </CardHeader>
       <CardContent>
+        <h4 className="text-xl mb-4">{t('loanCondition')}</h4>
         <div className="space-y-4 mb-8">
-          <div className="grid w-full max-w-sm items-center gap-1.5">
+          <RadioGroup
+            defaultValue={repaymentMethod}
+            id="repayment-method"
+            onValueChange={(value: string) => {
+              setRepaymentMethod(value)
+            }}
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="level-payment-mortgage" id="level-payment-mortgage" />
+              <Label htmlFor="level-payment-mortgage">{t('levelPaymentMortgage')}</Label>
+            </div>
+            {/* TODO: Support linear mortgage - 元本均等返済
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem disabled value="linear-mortgage" id="linear-mortgage" />
+                <Label htmlFor="linear-mortgage">{t('linearMortgage')}</Label>
+              </div>
+            */}
+          </RadioGroup>
+          <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="loan-amount">{t('loanAmount')}</Label>
             <Input
               id="loan-amount"
@@ -45,11 +65,13 @@ export const LoanCalculator = () => {
               onChange={(event) => {
                 setLoanAmount(event.target.value)
               }}
+              min={1}
+              max={100000}
               type="number"
               placeholder={t('loanAmount.placeholder')}
             />
           </div>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
+          <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="annual-interest-rate">{t('annualInterestRate')}</Label>
             <Input
               id="annual-interest-rate"
@@ -57,32 +79,35 @@ export const LoanCalculator = () => {
               onChange={(event) => {
                 setAnnualInterestRate(event.target.value)
               }}
+              min={0.1}
+              max={30}
               type="number"
               placeholder={t('annualInterestRate.placeholder')}
             />
           </div>
-          <div className="grid w-full max-w-sm items-center gap-1.5">
-            <Label htmlFor="repayment-term">{t('repaymentPeriod')}</Label>
-            <Select
-              onValueChange={(value) => {
-                setRepaymentTerm(value)
-              }}
-              value={repaymentPeriod}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder={t('repaymentPeriod.placeholder')}>{repaymentPeriod}</SelectValue>
-              </SelectTrigger>
-              <SelectContent>
-                {[...Array(50).keys()].map((i) => {
-                  const t = i + 1
-                  return (
-                    <SelectItem key={i} value={t.toString()}>
-                      {t}
-                    </SelectItem>
-                  )
-                })}
-              </SelectContent>
-            </Select>
+          <div className="grid w-full items-center gap-1.5">
+            <Label htmlFor="repayment-period">{t('repaymentPeriod')}</Label>
+            <div id="repayment-period" className="flex space-x-4">
+              <Input
+                value={repaymentPeriod}
+                onChange={(event) => {
+                  setRepaymentPeriod(event.target.value)
+                }}
+                min={1}
+                max={50}
+                type="number"
+                placeholder={t('repaymentPeriod.placeholder')}
+              />
+              <Slider
+                defaultValue={[parseInt(repaymentPeriod)]}
+                max={50}
+                min={1}
+                value={[parseInt(repaymentPeriod)]}
+                onValueChange={(e) => {
+                  setRepaymentPeriod(e[0].toString())
+                }}
+              />
+            </div>
           </div>
         </div>
         {!isFinite(result) ? (

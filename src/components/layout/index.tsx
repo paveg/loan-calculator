@@ -7,7 +7,7 @@ export const getNoneLayout = (page: React.ReactElement) => page
 export const getDefaultLayout = (page: React.ReactElement) => {
   return (
     <>
-      <div className="space-y-6 p-10 pb-16 md:block">
+      <div className="space-y-6 p-4 pb-16 md:block">
         <div className="space-y-0.5">
           <h1 className="text-3xl font-bold tracking-tight">Loan Calculator</h1>
         </div>
