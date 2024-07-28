@@ -1,10 +1,12 @@
 import { useState } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
 import { Input } from '../ui/input'
 import { Label } from '../ui/label'
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group'
 import { useTranslation } from 'react-i18next'
 import { Slider } from '../ui/slider'
+import { TypographyH4 } from '../typography'
+import { CalculatorIcon } from 'lucide-react'
 
 export const LoanCalculator = () => {
   const { t } = useTranslation('translation')
@@ -33,12 +35,15 @@ export const LoanCalculator = () => {
   return (
     <Card id="loan">
       <CardHeader>
-        <CardTitle>{t('calculatorTitle')}</CardTitle>
+        <CardTitle className="flex gap-1.5 items-center">
+          <CalculatorIcon className="w-6 h-6" />
+          {t('calculatorTitle')}
+        </CardTitle>
         <CardDescription>{t('calculatorDescription')}</CardDescription>
       </CardHeader>
       <CardContent>
-        <h4 className="text-xl mb-4">{t('loanCondition')}</h4>
-        <div className="space-y-4 mb-8">
+        <TypographyH4 className="mb-4">{t('loanCondition')}</TypographyH4>
+        <div className="space-y-4 mb-2">
           <RadioGroup
             defaultValue={repaymentMethod}
             id="repayment-method"
@@ -110,18 +115,30 @@ export const LoanCalculator = () => {
             </div>
           </div>
         </div>
-        {!isFinite(result) ? (
-          t('conditionIsInvalid')
-        ) : (
-          <div>
-            {t('monthlyRepaymentAmount', { amount: result })}
-            <br />
-            {t('totalRepaymentAmount', { amount: totalAmount })}
-            <br />
-            {t('interestExpense', { amount: totalAmount - loanAmountInt })}
-          </div>
-        )}
       </CardContent>
+      <CardFooter className="w-full block">
+        <div>
+          <TypographyH4 className="mb-4">{t('calculatorFooterTitle')}</TypographyH4>
+          {!isFinite(result) ? (
+            t('conditionIsInvalid')
+          ) : (
+            <div className="flex flex-col gap-4">
+              <div className="grid grid-cols-2 gap-2 text-muted-foreground">
+                <div>{t('monthlyRepaymentAmount')}:</div>
+                <div className="text-right">{t('amountUnit', { amount: result })}</div>
+                <div>{t('interestExpense')}:</div>
+                <div className="text-right">{t('amountUnit', { amount: totalAmount - loanAmountInt })}</div>
+              </div>
+              <div className="bg-primary rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-primary-foreground">
+                  {t('amountUnit', { amount: totalAmount })}
+                </div>
+                <p className="text-sm text-primary-foreground/80">{t('totalRepaymentAmount')}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </CardFooter>
     </Card>
   )
 }

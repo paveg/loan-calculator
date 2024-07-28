@@ -3,6 +3,7 @@
   "loanTitle": "ローン",
   "calculatorTitle": "簡易計算機",
   "calculatorDescription": "ローンの概算を計算することができます",
+  "calculatorFooterTitle": "結果",
   "loanCondition": "借入条件",
   "levelPaymentMortgage": "元利金等返済",
   "linearMortgage": "元本均等返済",
@@ -12,8 +13,9 @@
   "annualInterestRate.placeholder": "利率を入力してください",
   "repaymentPeriod": "返済期間（年）",
   "repaymentPeriod.placeholder": "返済期間を入力してください",
-  "monthlyRepaymentAmount": "返済月額: {{amount}} 円",
-  "totalRepaymentAmount": "返済総額: {{amount}} 円",
-  "interestExpense": "利息: {{amount}} 円",
-  "conditionIsInvalid": "条件が未入力"
+  "monthlyRepaymentAmount": "返済月額",
+  "totalRepaymentAmount": "返済総額",
+  "interestExpense": "利息総額",
+  "conditionIsInvalid": "条件が未入力",
+  "amountUnit": "{{amount}} 円"
 }
