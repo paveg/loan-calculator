@@ -7,9 +7,6 @@ on:
     # The branches below must be a subset of the branches above
     branches: ['main']
 
-env:
-  WORKING_DIRECTORY: application
-
 jobs:
   test:
     name: Run test codes
@@ -36,5 +33,3 @@ jobs:
         run: pnpm run test:ci
       - name: Show coverage
         uses: davelosert/vitest-coverage-report-action@v2
-        with:
-          working-directory: ${{ env.WORKING_DIRECTORY }}
