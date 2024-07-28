@@ -1,5 +1,8 @@
 # loan-calculator
 
+[![ESLint](https://github.com/paveg/loan-calculator/actions/workflows/eslint.yml/badge.svg)](https://github.com/paveg/loan-calculator/actions/workflows/eslint.yml)
+[![Vitest](https://github.com/paveg/loan-calculator/actions/workflows/vitest.yml/badge.svg)](https://github.com/paveg/loan-calculator/actions/workflows/vitest.yml)
+
 This is a simple loan calculator that is based on [vite-react-ts-tailwind-starter](https://github.com/Quilljou/vite-react-ts-tailwind-starter).
 
 ## Application
