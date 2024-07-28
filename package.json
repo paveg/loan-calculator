@@ -12,7 +12,9 @@
     "lint:fix": "eslint --quiet --fix src --ext .ts,.tsx && stylelint --fix src/**/*.less",
     "lint:ci": "eslint --quiet src --ext .ts,.tsx -f @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif && stylelint src/**/*.less",
     "i18next-resources-for-ts": "i18next-resources-for-ts toc -i ./src/i18n/locales/en -o ./src/types/resources.ts",
-    "translate": "transmart"
+    "translate": "transmart",
+    "test": "vitest",
+    "test:ci": "vitest --coverage.enabled true"
   },
   "dependencies": {
     "@loadable/component": "^5.15.3",
@@ -80,6 +82,7 @@
     "typescript": "^5.3.3",
     "vite": "^4.2.0",
     "vite-plugin-external": "^1.2.8",
-    "vite-plugin-svgr": "^2.4.0"
+    "vite-plugin-svgr": "^2.4.0",
+    "vitest": "^2.0.4"
   }
 }

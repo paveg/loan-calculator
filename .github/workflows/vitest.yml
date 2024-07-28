@@ -1,0 +1,27 @@
+name: EVitest
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: ['main']
+
+jobs:
+  test:
+    name: Run test codes
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        run: |
+          npm install -g pnpm
+      - name: Install packages
+        run: |
+          pnpm install-test
+      - name: Run Vitest
+        run: pnpm run test:ci
+
+      - name: Show coverage
+        uses: davelosert/vitest-coverage-report-action@v2

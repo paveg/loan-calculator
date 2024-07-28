@@ -5,7 +5,7 @@
   "calculatorDescription": "ローンの概算を計算することができます",
   "calculatorFooterTitle": "結果",
   "loanCondition": "借入条件",
-  "levelPaymentMortgage": "元利金等返済",
+  "levelPaymentMortgage": "元利均等返済",
   "linearMortgage": "元本均等返済",
   "loanAmount": "借入金額（万円）",
   "loanAmount.placeholder": "借入金額を入力してください",
