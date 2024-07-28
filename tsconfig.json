@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vitest/importMeta", "vitest/globals"],
     "module": "esnext",
     "useDefineForClassFields": true,
     "target": "ESNext",
@@ -27,5 +28,5 @@
       "src/*": ["./src/*"]
     }
   },
-  "include": ["src", "vite-env.d.ts"]
+  "include": ["src", "vite-env.d.ts", "vite.config.ts"]
 }

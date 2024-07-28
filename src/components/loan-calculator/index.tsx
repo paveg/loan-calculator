@@ -7,30 +7,27 @@ import { useTranslation } from 'react-i18next'
 import { Slider } from '../ui/slider'
 import { TypographyH4 } from '../typography'
 import { CalculatorIcon } from 'lucide-react'
+import { Calculator, RepaymentMethods } from 'src/utils/calculator'
 
 export const LoanCalculator = () => {
   const { t } = useTranslation('translation')
   const [loanAmount, setLoanAmount] = useState<string>('')
-  const [repaymentMethod, setRepaymentMethod] = useState<string>('level-payment-mortgage')
+  const [repaymentMethod, setRepaymentMethod] = useState<RepaymentMethods>('level-payment-mortgage')
   const [repaymentPeriod, setRepaymentPeriod] = useState<string>('1')
   const [annualInterestRate, setAnnualInterestRate] = useState<string>('')
 
-  const calculate = (loanAmount: string, repaymentPeriod: string, annualInterestRate: string) => {
-    const la = parseInt(loanAmount) || 0
-    const rp = parseInt(repaymentPeriod) || 0
-    const air = parseFloat(annualInterestRate) || 0.0
-
-    // Calculate monthly payment
-    const r = air / 12 / 100
-    const n = rp * 12
-    const m = (la * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1)
-
-    return Number(m.toFixed(3)) * 10000
+  const calculate = (
+    repaymentMethod: RepaymentMethods,
+    loanAmount: string,
+    repaymentPeriod: string,
+    annualInterestRate: string,
+  ) => {
+    return new Calculator(loanAmount, repaymentMethod, repaymentPeriod, annualInterestRate).run()
   }
 
-  const result = Math.round(calculate(loanAmount, repaymentPeriod, annualInterestRate))
-  const loanAmountInt = Math.round((parseInt(loanAmount) || 0) * 10000)
-  const totalAmount = Math.round(result * (parseInt(repaymentPeriod) * 12))
+  const result = calculate(repaymentMethod, loanAmount, repaymentPeriod, annualInterestRate)
+  const loanAmountInt = (parseInt(loanAmount) || 0) * 10000
+  const totalAmount = result * (parseInt(repaymentPeriod) * 12)
 
   return (
     <Card id="loan">
@@ -48,19 +45,17 @@ export const LoanCalculator = () => {
             defaultValue={repaymentMethod}
             id="repayment-method"
             onValueChange={(value: string) => {
-              setRepaymentMethod(value)
+              setRepaymentMethod(value as RepaymentMethods)
             }}
           >
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="level-payment-mortgage" id="level-payment-mortgage" />
               <Label htmlFor="level-payment-mortgage">{t('levelPaymentMortgage')}</Label>
             </div>
-            {/* TODO: Support linear mortgage - 元本均等返済
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem disabled value="linear-mortgage" id="linear-mortgage" />
-                <Label htmlFor="linear-mortgage">{t('linearMortgage')}</Label>
-              </div>
-            */}
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="linear-mortgage" id="linear-mortgage" />
+              <Label htmlFor="linear-mortgage">{t('linearMortgage')}</Label>
+            </div>
           </RadioGroup>
           <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="loan-amount">{t('loanAmount')}</Label>
@@ -92,8 +87,9 @@ export const LoanCalculator = () => {
           </div>
           <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="repayment-period">{t('repaymentPeriod')}</Label>
-            <div id="repayment-period" className="flex space-x-4">
+            <div className="flex space-x-4">
               <Input
+                id="repayment-period"
                 value={repaymentPeriod}
                 onChange={(event) => {
                   setRepaymentPeriod(event.target.value)
@@ -104,6 +100,7 @@ export const LoanCalculator = () => {
                 placeholder={t('repaymentPeriod.placeholder')}
               />
               <Slider
+                id="repayment-period"
                 defaultValue={[parseInt(repaymentPeriod)]}
                 max={50}
                 min={1}
