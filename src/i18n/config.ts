@@ -16,7 +16,6 @@ i18next
     }),
   )
   .init({
-    debug: true,
     fallbackLng: {
       default: ['ja', 'en'],
     },
