@@ -2,7 +2,7 @@
   "title": "ローン計算機",
   "loanTitle": "ローン",
   "calculatorTitle": "簡易計算機",
-  "calculatorDescription": "ローンの概算を簡単に計算することができます",
+  "calculatorDescription": "ローンの概算を計算することができます",
   "loanCondition": "借入条件",
   "levelPaymentMortgage": "元利金等返済",
   "linearMortgage": "元本均等返済",
