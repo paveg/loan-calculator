@@ -33,6 +33,10 @@ export default defineConfig(() => ({
     'import.meta.vitest': 'undefined',
   },
   test: {
+    coverage: {
+      reporter: ['text', 'json-summary', 'json'],
+      reportOnFailure: true,
+    },
     globals: true,
     includeSource: ['src/**/*.test.{ts}'],
   },
