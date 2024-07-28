@@ -33,17 +33,12 @@ jobs:
       - name: Install pnpm
         run: |
           npm install -g pnpm
-      - name: Install ESLint
+      - name: Install packages
         run: |
-          pnpm install eslint@8.10.0
-          pnpm install @microsoft/eslint-formatter-sarif@2.1.7
+          pnpm install
 
       - name: Run ESLint
-        run: pnpx eslint ./src
-          --config .eslintrc
-          --ext .js,.jsx,.ts,.tsx
-          --format @microsoft/eslint-formatter-sarif
-          --output-file eslint-results.sarif
+        run: pnpm run lint:ci
         continue-on-error: true
 
       - name: Upload analysis results to GitHub
