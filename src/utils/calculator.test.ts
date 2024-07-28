@@ -46,8 +46,19 @@ const tests: TestData = [
     gotMonthlyPayment: 17747,
     gotAmount: 1064820,
   },
+  {
+    // CHECK: This is simulated by https://www.kitagin.co.jp/simulation/gankin.html
+    // TODO: Update this test after implementing linear mortgage
+    name: 'linearMortgage - 7000000, 1.5%, 10 years',
+    loanAmount: '700',
+    repaymentMethod: 'linear-mortgage',
+    repaymentPeriod: '10',
+    annualInterestRate: '1.5',
+    gotMonthlyPayment: 0,
+    gotAmount: 0, // 7529380
+  },
 ]
-describe('levelPayment', () => {
+describe('calculator', () => {
   let calc: Calculator
   tests.forEach((t) => {
     it(t.name, () => {

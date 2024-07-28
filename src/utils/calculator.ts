@@ -51,14 +51,3 @@ export class Calculator {
     return parseInt(n) || 0
   }
 }
-
-if (import.meta.vitest) {
-  console.info('passed')
-  const { it, describe, expect } = import.meta.vitest
-  describe('levelPayment', () => {
-    it('should return correct value', () => {
-      const calculator = new Calculator('700', 'level-payment-mortgage', '1.5', '120')
-      expect(calculator.run()).toBe(1)
-    })
-  })
-}
