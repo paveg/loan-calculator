@@ -16,7 +16,6 @@ jobs:
       matrix:
         branch:
           - ${{ github.head_ref }}
-          - "main"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -51,11 +50,7 @@ jobs:
         with:
           name: coverage-${{ github.head_ref }}
           path: coverage
-      - uses: actions/download-artifact@v4
-        with:
-          name: coverage-main
-          path: coverage-main
       - name: Report coverage
         uses: davelosert/vitest-coverage-report-action@v2
         with:
-          json-summary-compare-path: coverage-main/coverage-summary.json
+          json-summary-compare-path: coverage/coverage-summary.json
