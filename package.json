@@ -10,7 +10,7 @@
     "typecheck:watch": "tsc --noEmit --watch",
     "lint": "eslint --quiet src --ext .ts,.tsx && stylelint src/**/*.less",
     "lint:fix": "eslint --quiet --fix src --ext .ts,.tsx && stylelint --fix src/**/*.less",
-    "lint:ci": "eslint --quiet src --ext .ts,.tsx && stylelint src/**/*.less --format @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif",
+    "lint:ci": "eslint --quiet src --ext .ts,.tsx -f @microsoft/eslint-formatter-sarif --output-file eslint-results.sarif && stylelint src/**/*.less",
     "i18next-resources-for-ts": "i18next-resources-for-ts toc -i ./src/i18n/locales/en -o ./src/types/resources.ts",
     "translate": "transmart"
   },
