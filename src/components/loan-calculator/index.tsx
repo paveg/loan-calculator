@@ -52,10 +52,12 @@ export const LoanCalculator = () => {
               <RadioGroupItem value="level-payment-mortgage" id="level-payment-mortgage" />
               <Label htmlFor="level-payment-mortgage">{t('levelPaymentMortgage')}</Label>
             </div>
+            {/* TODO: Supports linear mortgage
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="linear-mortgage" id="linear-mortgage" />
               <Label htmlFor="linear-mortgage">{t('linearMortgage')}</Label>
             </div>
+            */}
           </RadioGroup>
           <div className="grid w-full items-center gap-1.5">
             <Label htmlFor="loan-amount">{t('loanAmount')}</Label>
