@@ -3,6 +3,7 @@
   "loanTitle": "Loan",
   "calculatorTitle": "Simple Calculator",
   "calculatorDescription": "Easy to calculate your loan",
+  "calculatorFooterTitle": "Result",
   "loanCondition": "Loan Condition",
   "levelPaymentMortgage": "Level Payment Mortgage",
   "linearMortgage": "Linear Mortgage",
@@ -12,8 +13,9 @@
   "annualInterestRate.placeholder": "Enter the annual interest rate",
   "repaymentPeriod": "Repayment period (years)",
   "repaymentPeriod.placeholder": "Enter the repayment period",
-  "monthlyRepaymentAmount": "Monthly repayment amount: {{amount}} yen",
-  "totalRepaymentAmount": "Total repayment amount: {{amount}} yen",
-  "interestExpense": "Interest expense: {{amount}} yen",
-  "conditionIsInvalid": "Condition is incomplete"
+  "monthlyRepaymentAmount": "Monthly Payment",
+  "totalRepaymentAmount": "Total Repayment",
+  "interestExpense": "Total Interest Paid",
+  "conditionIsInvalid": "Condition is incomplete",
+  "amountUnit": "{{amount}} yen"
 }
